@@ -369,3 +369,443 @@ a {
         flex-direction: column;
     }
 }
+/* =========================================================
+   CASE STUDY PAGES
+   ========================================================= */
+
+.case-container {
+    width: min(100% - 40px, var(--content-width));
+    margin: 0 auto;
+}
+
+.case-hero {
+    overflow: hidden;
+    background: var(--deep-navy);
+    color: var(--white);
+}
+
+.case-hero-inner {
+    width: min(100% - 40px, var(--content-width));
+    min-height: 610px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: minmax(0, 1.35fr) minmax(320px, 0.65fr);
+    align-items: center;
+    gap: 80px;
+    padding: 90px 0;
+}
+
+.case-hero-copy h1 {
+    max-width: 780px;
+    margin: 0;
+    color: var(--white);
+    font-size: clamp(3.2rem, 7vw, 6.4rem);
+    font-weight: 600;
+    letter-spacing: -0.055em;
+    line-height: 0.98;
+}
+
+.case-subtitle {
+    max-width: 750px;
+    margin: 30px 0 34px;
+    color: #dce5eb;
+    font-size: 1.18rem;
+}
+
+.case-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.case-tags span {
+    padding: 8px 12px;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    color: #dce5eb;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+}
+
+.wheel-visual {
+    position: relative;
+    width: min(380px, 100%);
+    aspect-ratio: 1;
+    margin: 0 auto;
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    background:
+        linear-gradient(
+            rgba(255, 255, 255, 0.035) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(255, 255, 255, 0.035) 1px,
+            transparent 1px
+        );
+    background-size: 28px 28px;
+}
+
+.wheel-ring {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    border: 1px solid rgba(220, 229, 235, 0.78);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.wheel-ring-outer {
+    width: 78%;
+    height: 78%;
+    border-width: 3px;
+}
+
+.wheel-ring-middle {
+    width: 55%;
+    height: 55%;
+}
+
+.wheel-ring-inner {
+    width: 18%;
+    height: 18%;
+    border-width: 2px;
+}
+
+.wheel-axis {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    background: rgba(220, 229, 235, 0.42);
+    transform: translate(-50%, -50%);
+}
+
+.horizontal-axis {
+    width: 88%;
+    height: 1px;
+}
+
+.vertical-axis {
+    width: 1px;
+    height: 88%;
+}
+
+.case-section {
+    padding: 100px 0;
+}
+
+.case-section + .case-section {
+    border-top: 1px solid var(--border);
+}
+
+.compact-heading {
+    margin-bottom: 44px;
+}
+
+.compact-heading h2 {
+    max-width: 850px;
+}
+
+.snapshot-section {
+    background: var(--white);
+}
+
+.snapshot-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    border-top: 1px solid var(--border);
+    border-left: 1px solid var(--border);
+}
+
+.snapshot-item {
+    min-height: 150px;
+    padding: 28px;
+    border-right: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+}
+
+.snapshot-label {
+    margin: 0 0 12px;
+    color: var(--muted-text);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+.snapshot-value {
+    margin: 0;
+    color: var(--deep-navy);
+    font-size: 1.05rem;
+    font-weight: 700;
+    line-height: 1.35;
+}
+
+.two-column-section {
+    display: grid;
+    grid-template-columns: minmax(280px, 0.8fr) minmax(0, 1.2fr);
+    gap: 90px;
+}
+
+.section-title-column h2 {
+    margin: 0;
+    color: var(--deep-navy);
+    font-size: clamp(2rem, 4vw, 3.25rem);
+    font-weight: 600;
+    letter-spacing: -0.035em;
+    line-height: 1.12;
+}
+
+.section-copy {
+    max-width: 720px;
+    color: var(--muted-text);
+    font-size: 1.06rem;
+}
+
+.section-copy p {
+    margin: 0 0 24px;
+}
+
+.section-copy p:last-child {
+    margin-bottom: 0;
+}
+
+.context-section,
+.workflow-section,
+.outcome-section {
+    background: var(--white);
+}
+
+.context-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+}
+
+.context-card {
+    min-height: 255px;
+    padding: 34px;
+    background: var(--background);
+}
+
+.context-number {
+    display: block;
+    margin-bottom: 42px;
+    color: var(--accent);
+    font-size: 0.82rem;
+    font-weight: 700;
+}
+
+.context-card h3 {
+    margin: 0 0 12px;
+    color: var(--deep-navy);
+    font-size: 1.3rem;
+}
+
+.context-card p {
+    margin: 0;
+    color: var(--muted-text);
+}
+
+.workflow-grid {
+    display: flex;
+    align-items: stretch;
+    gap: 14px;
+    overflow-x: auto;
+    padding: 8px 0 22px;
+}
+
+.workflow-step {
+    flex: 0 0 185px;
+    min-height: 230px;
+    padding: 24px;
+    background: var(--background);
+    border: 1px solid var(--border);
+}
+
+.workflow-step span {
+    display: block;
+    margin-bottom: 38px;
+    color: var(--accent);
+    font-size: 0.78rem;
+    font-weight: 700;
+}
+
+.workflow-step h3 {
+    margin: 0 0 12px;
+    color: var(--deep-navy);
+    font-size: 1.05rem;
+}
+
+.workflow-step p {
+    margin: 0;
+    color: var(--muted-text);
+    font-size: 0.9rem;
+}
+
+.workflow-arrow {
+    flex: 0 0 auto;
+    align-self: center;
+    color: var(--accent);
+    font-size: 1.6rem;
+}
+
+.contribution-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.contribution-card {
+    min-height: 210px;
+    padding: 30px;
+    background: var(--white);
+    border: 1px solid var(--border);
+}
+
+.contribution-card h3 {
+    margin: 0 0 16px;
+    color: var(--deep-navy);
+    font-size: 1.15rem;
+}
+
+.contribution-card p {
+    margin: 0;
+    color: var(--muted-text);
+}
+
+.reflection-section {
+    padding: 110px 0;
+    background: var(--navy);
+    color: var(--white);
+}
+
+.reflection-section .eyebrow {
+    color: #b8cad5;
+}
+
+.reflection-section blockquote {
+    max-width: 990px;
+    margin: 20px 0 0;
+    color: var(--white);
+    font-size: clamp(1.65rem, 3vw, 2.6rem);
+    font-weight: 400;
+    letter-spacing: -0.025em;
+    line-height: 1.35;
+}
+
+.confidentiality-note {
+    padding: 34px 0;
+    background: #e9eef1;
+    border-bottom: 1px solid var(--border);
+}
+
+.confidentiality-note p {
+    max-width: 900px;
+    margin: 0;
+    color: var(--muted-text);
+    font-size: 0.86rem;
+}
+
+.case-navigation {
+    background: var(--white);
+}
+
+.case-navigation .case-container {
+    min-height: 190px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.case-navigation a,
+.next-case-placeholder {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 38px;
+    color: var(--deep-navy);
+    font-size: 1.15rem;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.case-navigation a {
+    border-right: 1px solid var(--border);
+}
+
+.case-navigation a:hover {
+    background: var(--background);
+}
+
+.case-navigation span {
+    margin-bottom: 8px;
+    color: var(--muted-text);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+.next-case-placeholder {
+    color: var(--muted-text);
+}
+
+@media (max-width: 900px) {
+    .case-hero-inner {
+        grid-template-columns: 1fr;
+        gap: 50px;
+    }
+
+    .wheel-visual {
+        width: min(330px, 85vw);
+        margin-left: 0;
+    }
+
+    .snapshot-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .two-column-section {
+        grid-template-columns: 1fr;
+        gap: 38px;
+    }
+
+    .contribution-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 620px) {
+    .case-hero-inner {
+        min-height: auto;
+        padding: 75px 0;
+    }
+
+    .case-section {
+        padding: 72px 0;
+    }
+
+    .snapshot-grid,
+    .context-grid,
+    .contribution-grid,
+    .case-navigation .case-container {
+        grid-template-columns: 1fr;
+    }
+
+    .case-navigation a {
+        border-right: 0;
+        border-bottom: 1px solid var(--border);
+    }
+
+    .case-navigation a,
+    .next-case-placeholder {
+        min-height: 145px;
+        padding: 28px 0;
+    }
+
+    .reflection-section {
+        padding: 80px 0;
+    }
+}
