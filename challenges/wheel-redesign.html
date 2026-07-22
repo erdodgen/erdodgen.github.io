@@ -1,9 +1,458 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Wheel Redesign</title>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="Aircraft wheel redesign engineering case study by Eric Dodgen, covering load development, pressure-profile translation, finite element analysis, testing, and multidisciplinary product development."
+    >
+
+    <title>Aircraft Wheel Redesign | Eric Dodgen</title>
+
+    <link rel="stylesheet" href="../css/styles.css">
 </head>
+
 <body>
-    <h1>Wheel Redesign</h1>
+    <header class="site-header">
+        <div class="header-inner">
+            <a class="site-name" href="../index.html">Eric Dodgen</a>
+
+            <nav class="main-nav" aria-label="Main navigation">
+                <a href="../index.html#challenges">Engineering Challenges</a>
+                <a href="../index.html#about">About</a>
+                <a href="../index.html#contact">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="case-hero">
+            <div class="case-hero-inner">
+                <div class="case-hero-copy">
+                    <p class="eyebrow">Aerospace Structures</p>
+
+                    <h1>Aircraft Wheel Redesign</h1>
+
+                    <p class="case-subtitle">
+                        Developing a modern replacement for a legacy military
+                        aircraft wheel through test-informed loading,
+                        mathematical modeling, finite element analysis, and
+                        multidisciplinary design iteration.
+                    </p>
+
+                    <div class="case-tags" aria-label="Project capabilities">
+                        <span>Finite Element Analysis</span>
+                        <span>Load Development</span>
+                        <span>Fatigue Improvement</span>
+                        <span>Test Correlation</span>
+                    </div>
+                </div>
+
+                <div
+                    class="wheel-visual"
+                    role="img"
+                    aria-label="Abstract technical illustration of an aircraft wheel"
+                >
+                    <div class="wheel-ring wheel-ring-outer"></div>
+                    <div class="wheel-ring wheel-ring-middle"></div>
+                    <div class="wheel-ring wheel-ring-inner"></div>
+                    <div class="wheel-axis horizontal-axis"></div>
+                    <div class="wheel-axis vertical-axis"></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="case-section snapshot-section">
+            <div class="case-container">
+                <div class="section-heading compact-heading">
+                    <p class="eyebrow">Project Snapshot</p>
+                    <h2>A sustainment problem requiring a new technical solution.</h2>
+                </div>
+
+                <div class="snapshot-grid">
+                    <div class="snapshot-item">
+                        <p class="snapshot-label">Industry</p>
+                        <p class="snapshot-value">Military Aerospace</p>
+                    </div>
+
+                    <div class="snapshot-item">
+                        <p class="snapshot-label">Project Type</p>
+                        <p class="snapshot-value">Legacy Component Redesign</p>
+                    </div>
+
+                    <div class="snapshot-item">
+                        <p class="snapshot-label">Primary Role</p>
+                        <p class="snapshot-value">Structural Analysis and Method Development</p>
+                    </div>
+
+                    <div class="snapshot-item">
+                        <p class="snapshot-label">Core Disciplines</p>
+                        <p class="snapshot-value">Test, CAD, Mathematics, FEA and Documentation</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="case-section">
+            <div class="case-container two-column-section">
+                <div class="section-title-column">
+                    <p class="eyebrow">The Challenge</p>
+                    <h2>Replace a costly sole-source component while improving its performance.</h2>
+                </div>
+
+                <div class="section-copy">
+                    <p>
+                        A legacy aircraft wheel was being manufactured by a
+                        single qualified supplier. As the only available source,
+                        the manufacturer was able to increase pricing, creating
+                        a growing procurement and sustainment concern for the
+                        Air Force.
+                    </p>
+
+                    <p>
+                        Rather than reproduce the existing wheel without change,
+                        the program pursued a redesigned component that could
+                        reduce supplier dependence while incorporating modern
+                        engineering improvements.
+                    </p>
+
+                    <p>
+                        The replacement wheel was intended to improve fatigue
+                        life, simplify assembly, accommodate updated pressure
+                        sensing and overfill-protection technology, and interface
+                        with a newer tire geometry already used elsewhere.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="case-section context-section">
+            <div class="case-container">
+                <div class="section-heading compact-heading">
+                    <p class="eyebrow">Engineering Context</p>
+                    <h2>The redesign affected the complete load-development process.</h2>
+                </div>
+
+                <div class="context-grid">
+                    <article class="context-card">
+                        <span class="context-number">01</span>
+                        <h3>Legacy Requirements</h3>
+                        <p>
+                            Historical aircraft usage and legacy design
+                            parameters had to be translated into a defensible
+                            modern loading profile.
+                        </p>
+                    </article>
+
+                    <article class="context-card">
+                        <span class="context-number">02</span>
+                        <h3>New Tire Geometry</h3>
+                        <p>
+                            The updated tire changed the contact geometry, so
+                            pressure data from the original configuration could
+                            not be applied directly.
+                        </p>
+                    </article>
+
+                    <article class="context-card">
+                        <span class="context-number">03</span>
+                        <h3>Testing Limitations</h3>
+                        <p>
+                            Physical tests could not be conducted at ultimate
+                            load without risking damage to the hardware and test
+                            system.
+                        </p>
+                    </article>
+
+                    <article class="context-card">
+                        <span class="context-number">04</span>
+                        <h3>Design Integration</h3>
+                        <p>
+                            Structural performance had to be balanced against
+                            assembly, sensing, overfill protection, manufacturing
+                            and sustainment requirements.
+                        </p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="case-section">
+            <div class="case-container two-column-section">
+                <div class="section-title-column">
+                    <p class="eyebrow">My Role</p>
+                    <h2>Build the analytical bridge between test data and the new design.</h2>
+                </div>
+
+                <div class="section-copy">
+                    <p>
+                        I developed the structural analysis methodology used to
+                        evaluate and refine the redesigned wheel. This included
+                        supporting load-profile development, building finite
+                        element models, evaluating design iterations, and
+                        documenting the analytical basis for engineering
+                        decisions.
+                    </p>
+
+                    <p>
+                        The most difficult part of my assignment was translating
+                        a measured pressure distribution from the legacy wheel
+                        and tire configuration to a substantially different
+                        wheel and tire geometry.
+                    </p>
+
+                    <p>
+                        The available test data represented attainable test
+                        loads rather than the ultimate loads required for
+                        structural analysis. A direct transfer of the measured
+                        pressure values would therefore have been both
+                        geometrically and physically inadequate.
+                    </p>
+
+                    <p>
+                        To address this, I developed custom mathematical software
+                        that represented the tested pressure profile, scaled it
+                        to the required ultimate loading condition, and mapped
+                        the resulting distribution onto the geometry of the new
+                        wheel and tire interface.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="case-section workflow-section">
+            <div class="case-container">
+                <div class="section-heading compact-heading">
+                    <p class="eyebrow">Engineering Workflow</p>
+                    <h2>From aircraft history to a validated design load.</h2>
+                </div>
+
+                <div class="workflow-grid">
+                    <div class="workflow-step">
+                        <span>01</span>
+                        <h3>Aircraft History</h3>
+                        <p>
+                            Review operational history and legacy design
+                            requirements.
+                        </p>
+                    </div>
+
+                    <div class="workflow-arrow" aria-hidden="true">→</div>
+
+                    <div class="workflow-step">
+                        <span>02</span>
+                        <h3>Ground Loads</h3>
+                        <p>
+                            Develop representative wheel loading conditions.
+                        </p>
+                    </div>
+
+                    <div class="workflow-arrow" aria-hidden="true">→</div>
+
+                    <div class="workflow-step">
+                        <span>03</span>
+                        <h3>Physical Test</h3>
+                        <p>
+                            Generate pressure-profile data under controlled
+                            loading.
+                        </p>
+                    </div>
+
+                    <div class="workflow-arrow" aria-hidden="true">→</div>
+
+                    <div class="workflow-step">
+                        <span>04</span>
+                        <h3>Mathematical Model</h3>
+                        <p>
+                            Fit a reusable analytical representation to the
+                            measured profile.
+                        </p>
+                    </div>
+
+                    <div class="workflow-arrow" aria-hidden="true">→</div>
+
+                    <div class="workflow-step">
+                        <span>05</span>
+                        <h3>Ultimate Scaling</h3>
+                        <p>
+                            Scale the pressure field to required structural
+                            design loads.
+                        </p>
+                    </div>
+
+                    <div class="workflow-arrow" aria-hidden="true">→</div>
+
+                    <div class="workflow-step">
+                        <span>06</span>
+                        <h3>Geometry Translation</h3>
+                        <p>
+                            Map the pressure distribution to the new tire and
+                            wheel geometry.
+                        </p>
+                    </div>
+
+                    <div class="workflow-arrow" aria-hidden="true">→</div>
+
+                    <div class="workflow-step">
+                        <span>07</span>
+                        <h3>FEA and Iteration</h3>
+                        <p>
+                            Evaluate structural performance and refine the
+                            design.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="case-section">
+            <div class="case-container">
+                <div class="section-heading compact-heading">
+                    <p class="eyebrow">Technical Contributions</p>
+                    <h2>Analysis was one part of a broader engineering system.</h2>
+                </div>
+
+                <div class="contribution-grid">
+                    <article class="contribution-card">
+                        <h3>Load Development</h3>
+                        <p>
+                            Supported development of wheel loads using aircraft
+                            history and legacy design parameters.
+                        </p>
+                    </article>
+
+                    <article class="contribution-card">
+                        <h3>Test Interpretation</h3>
+                        <p>
+                            Converted measured pressure data into a form suitable
+                            for structural simulation and design evaluation.
+                        </p>
+                    </article>
+
+                    <article class="contribution-card">
+                        <h3>Custom Software</h3>
+                        <p>
+                            Developed mathematical software for profile fitting,
+                            load scaling and geometry translation.
+                        </p>
+                    </article>
+
+                    <article class="contribution-card">
+                        <h3>Finite Element Analysis</h3>
+                        <p>
+                            Built and evaluated finite element models under
+                            ultimate design conditions.
+                        </p>
+                    </article>
+
+                    <article class="contribution-card">
+                        <h3>Design Iteration</h3>
+                        <p>
+                            Used analytical results to support repeated CAD
+                            refinement and structural improvement.
+                        </p>
+                    </article>
+
+                    <article class="contribution-card">
+                        <h3>Cross-Functional Coordination</h3>
+                        <p>
+                            Worked across purchasing, cost analysis, CAD,
+                            testing, structural analysis and documentation.
+                        </p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="case-section outcome-section">
+            <div class="case-container two-column-section">
+                <div class="section-title-column">
+                    <p class="eyebrow">Project Value</p>
+                    <h2>A repeatable analytical method for evaluating a modern replacement.</h2>
+                </div>
+
+                <div class="section-copy">
+                    <p>
+                        The resulting methodology enabled the redesigned wheel
+                        to be evaluated using realistic pressure distributions
+                        derived from physical testing while still addressing the
+                        ultimate loads required for finite element analysis.
+                    </p>
+
+                    <p>
+                        This approach supported iterative development of a wheel
+                        intended to reduce sole-source procurement risk while
+                        improving fatigue performance, assembly, maintainability,
+                        and integration of newer sensing and overfill technology.
+                    </p>
+
+                    <p>
+                        It also created a defensible connection between aircraft
+                        requirements, physical testing, mathematical
+                        transformation, and structural simulation.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="reflection-section">
+            <div class="case-container">
+                <p class="eyebrow">Engineering Reflection</p>
+
+                <blockquote>
+                    Complex engineering projects are often enabled by solving
+                    the problems between disciplines. In this case, the central
+                    challenge was not simply creating an accurate finite element
+                    model. It was developing a defensible method that connected
+                    aircraft loading, physical testing, mathematical modeling,
+                    changing geometry, and structural analysis.
+                </blockquote>
+            </div>
+        </section>
+
+        <section class="confidentiality-note">
+            <div class="case-container">
+                <p>
+                    This case study describes engineering methods and project
+                    context at a general level. Proprietary, export-controlled,
+                    aircraft-specific, and program-sensitive technical details
+                    have been intentionally excluded.
+                </p>
+            </div>
+        </section>
+
+        <nav class="case-navigation" aria-label="Case study navigation">
+            <div class="case-container">
+                <a href="../index.html#challenges">
+                    <span>Return to</span>
+                    Engineering Challenges
+                </a>
+
+                <div class="next-case-placeholder">
+                    <span>Next Case Study</span>
+                    Advanced Simulation Research
+                </div>
+            </div>
+        </nav>
+    </main>
+
+    <footer class="site-footer" id="contact">
+        <div>
+            <h2>Eric Dodgen</h2>
+            <p>
+                Mechanical Engineering · Product Development · Technical Leadership
+            </p>
+        </div>
+
+        <p>
+            Contact information and resume link will be added here.
+        </p>
+    </footer>
 </body>
 </html>
