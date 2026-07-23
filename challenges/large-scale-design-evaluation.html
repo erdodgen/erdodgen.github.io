@@ -1,0 +1,1002 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="Large-scale medical-device design evaluation case study by Eric Dodgen, covering laser-cut nitinol stent-graft development, automated finite element analysis, statistical design evaluation, optimization, fatigue prediction, and engineering software integration."
+    >
+
+    <title>Large-Scale Design Evaluation | Eric Dodgen</title>
+
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+
+<body>
+    <header class="site-header">
+        <div class="header-inner">
+            <a class="site-name" href="../index.html">Eric Dodgen</a>
+
+            <nav class="main-nav" aria-label="Main navigation">
+                <a href="../index.html#challenges">Engineering Challenges</a>
+                <a href="../index.html#about">About</a>
+                <a href="../index.html#contact">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="case-hero optimization-case-hero">
+            <div class="case-hero-inner">
+                <div class="case-hero-copy">
+                    <p class="eyebrow">Computational Product Development</p>
+
+                    <h1>Large-Scale Design Evaluation</h1>
+
+                    <p class="case-subtitle">
+                        Creating an automated computational system to generate,
+                        analyze, compare, and optimize thousands of laser-cut
+                        nitinol stent designs within a tightly constrained
+                        medical-device design space.
+                    </p>
+
+                    <div class="case-tags" aria-label="Project capabilities">
+                        <span>Design Automation</span>
+                        <span>Finite Element Analysis</span>
+                        <span>Optimization</span>
+                        <span>Medical Devices</span>
+                    </div>
+                </div>
+
+                <div
+                    class="optimization-visual"
+                    role="img"
+                    aria-label="Abstract technical illustration of a laser-cut stent pattern and automated design evaluation"
+                >
+                    <div class="optimization-grid"></div>
+
+                    <div class="stent-outline">
+                        <div class="stent-pattern pattern-row-one">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+
+                        <div class="stent-pattern pattern-row-two">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+
+                        <div class="stent-pattern pattern-row-three">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+
+                        <div class="stent-pattern pattern-row-four">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                    </div>
+
+                    <div class="evaluation-path">
+                        <div class="evaluation-node node-design">D</div>
+                        <div class="evaluation-arrow arrow-one">→</div>
+                        <div class="evaluation-node node-mesh">M</div>
+                        <div class="evaluation-arrow arrow-two">→</div>
+                        <div class="evaluation-node node-solve">S</div>
+                        <div class="evaluation-arrow arrow-three">→</div>
+                        <div class="evaluation-node node-result">R</div>
+                    </div>
+
+                    <div class="optimization-curve">
+                        <span class="curve-segment curve-one"></span>
+                        <span class="curve-segment curve-two"></span>
+                        <span class="curve-segment curve-three"></span>
+                        <span class="curve-segment curve-four"></span>
+                        <span class="curve-point point-one"></span>
+                        <span class="curve-point point-two"></span>
+                        <span class="curve-point point-three"></span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="case-section snapshot-section">
+            <div class="case-container">
+                <div class="section-heading compact-heading">
+                    <p class="eyebrow">Project Snapshot</p>
+
+                    <h2>
+                        Replace an impractical trial-and-error process with
+                        automated computational exploration.
+                    </h2>
+                </div>
+
+                <div class="snapshot-grid">
+                    <div class="snapshot-item">
+                        <p class="snapshot-label">Industry</p>
+                        <p class="snapshot-value">
+                            Implantable Medical Devices
+                        </p>
+                    </div>
+
+                    <div class="snapshot-item">
+                        <p class="snapshot-label">Product Type</p>
+                        <p class="snapshot-value">
+                            Self-Expanding Aortic Stent-Graft
+                        </p>
+                    </div>
+
+                    <div class="snapshot-item">
+                        <p class="snapshot-label">Primary Role</p>
+                        <p class="snapshot-value">
+                            Analysis Automation and Design Optimization
+                        </p>
+                    </div>
+
+                    <div class="snapshot-item">
+                        <p class="snapshot-label">Design Scale</p>
+                        <p class="snapshot-value">
+                            Thousands of Designs Evaluated
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="case-section">
+            <div class="case-container two-column-section">
+                <div class="section-title-column">
+                    <p class="eyebrow">The Product Objective</p>
+
+                    <h2>
+                        Develop a lower-profile self-expanding stent without
+                        sacrificing deployed size or fatigue durability.
+                    </h2>
+                </div>
+
+                <div class="section-copy">
+                    <p>
+                        The development objective was to design a laser-cut
+                        nitinol support structure for an aortic stent-graft
+                        using W. L. Gore &amp; Associates’ established ePTFE
+                        graft technology.
+                    </p>
+
+                    <p>
+                        The existing product used a wire-based support
+                        architecture. A laser-cut structure offered the
+                        possibility of a substantially smaller compressed
+                        profile while still self-expanding to the required
+                        deployed diameter.
+                    </p>
+
+                    <p>
+                        A smaller delivery profile could improve device
+                        trackability and expand the range of vascular anatomies
+                        that could accommodate the delivery system.
+                    </p>
+
+                    <p>
+                        However, the new structure still had to provide adequate
+                        radial support, conformability, deployment behavior,
+                        dimensional stability, and long-term fatigue resistance.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="case-section context-section">
+            <div class="case-container">
+                <div class="section-heading compact-heading">
+                    <p class="eyebrow">Why the Design Was Difficult</p>
+
+                    <h2>
+                        The allowable design space was narrow, highly coupled,
+                        and expensive to explore physically.
+                    </h2>
+                </div>
+
+                <div class="context-grid">
+                    <article class="context-card">
+                        <span class="context-number">01</span>
+                        <h3>Patent Constraints</h3>
+
+                        <p>
+                            Existing intellectual property restricted the
+                            permissible stent patterns and reduced the available
+                            geometric design space.
+                        </p>
+                    </article>
+
+                    <article class="context-card">
+                        <span class="context-number">02</span>
+                        <h3>Superelastic Material</h3>
+
+                        <p>
+                            Nitinol behavior required nonlinear constitutive
+                            modeling and careful interpretation of strain during
+                            crimping, deployment, and cyclic loading.
+                        </p>
+                    </article>
+
+                    <article class="context-card">
+                        <span class="context-number">03</span>
+                        <h3>Coupled Variables</h3>
+
+                        <p>
+                            Strut width, thickness, length, curvature,
+                            connectivity, spacing, and repeating patterns
+                            influenced several performance measures at once.
+                        </p>
+                    </article>
+
+                    <article class="context-card">
+                        <span class="context-number">04</span>
+                        <h3>Long Prototype Lead Times</h3>
+
+                        <p>
+                            Producing laser-cut nitinol prototypes required
+                            specialized manufacturing and finishing processes.
+                        </p>
+                    </article>
+
+                    <article class="context-card">
+                        <span class="context-number">05</span>
+                        <h3>Lengthy Fatigue Testing</h3>
+
+                        <p>
+                            Physical testing to demonstrate long-term cyclic
+                            durability could require months of accelerated
+                            cycling.
+                        </p>
+                    </article>
+
+                    <article class="context-card">
+                        <span class="context-number">06</span>
+                        <h3>Competing Requirements</h3>
+
+                        <p>
+                            Designs had to balance compressed profile, expansion,
+                            strength, flexibility, fatigue life, manufacturability,
+                            and patent compliance.
+                        </p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="case-section">
+            <div class="case-container two-column-section">
+                <div class="section-title-column">
+                    <p class="eyebrow">The Conventional Process</p>
+
+                    <h2>
+                        Finite element analysis improved prediction but did not
+                        solve the design-search problem.
+                    </h2>
+                </div>
+
+                <div class="section-copy">
+                    <p>
+                        Finite element analysis could estimate strain,
+                        deployment behavior, radial performance, and relative
+                        fatigue risk before a prototype entered long-duration
+                        testing.
+                    </p>
+
+                    <p>
+                        This reduced dependence on testing alone, but each
+                        candidate design still had to be created, meshed,
+                        analyzed, reviewed, and compared manually.
+                    </p>
+
+                    <p>
+                        Because the variables interacted, changing one dimension
+                        could improve one response while worsening several
+                        others. Sequentially modifying a design based on
+                        engineering intuition remained a slow trial-and-error
+                        process.
+                    </p>
+
+                    <p>
+                        Even an experienced analyst could only examine a small
+                        fraction of the possible designs. The central problem
+                        therefore became one of scale: how could the team search
+                        thousands of viable combinations rather than manually
+                        evaluating a few?
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="case-section challenge-comparison-section">
+            <div class="case-container">
+                <div class="section-heading compact-heading">
+                    <p class="eyebrow">The Process Limitation</p>
+
+                    <h2>
+                        Manual engineering could evaluate individual designs,
+                        but not the complete design landscape.
+                    </h2>
+                </div>
+
+                <div class="design-process-comparison">
+                    <article class="design-process-column">
+                        <p class="process-label">Sequential Development</p>
+                        <h3>One Design at a Time</h3>
+
+                        <ol>
+                            <li>Create a candidate geometry</li>
+                            <li>Build the finite element model</li>
+                            <li>Mesh and solve the simulation</li>
+                            <li>Review stress and strain results</li>
+                            <li>Modify the design based on judgment</li>
+                            <li>Repeat until a viable candidate emerges</li>
+                        </ol>
+                    </article>
+
+                    <div class="process-transition" aria-hidden="true">→</div>
+
+                    <article class="design-process-column design-process-highlight">
+                        <p class="process-label">Automated Exploration</p>
+                        <h3>Thousands of Designs</h3>
+
+                        <ol>
+                            <li>Define variables and allowable ranges</li>
+                            <li>Automatically generate candidate geometries</li>
+                            <li>Build, mesh, and solve each model</li>
+                            <li>Extract standardized performance measures</li>
+                            <li>Identify interactions statistically</li>
+                            <li>Optimize toward the best design region</li>
+                        </ol>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="case-section">
+            <div class="case-container two-column-section">
+                <div class="section-title-column">
+                    <p class="eyebrow">My Approach</p>
+
+                    <h2>
+                        Create a software system that performed the repetitive
+                        engineering workflow autonomously.
+                    </h2>
+                </div>
+
+                <div class="section-copy">
+                    <p>
+                        No existing tool performed the complete workflow needed
+                        for this development problem. I therefore learned and
+                        combined several advanced software technologies and
+                        wrote custom code that allowed independent engineering
+                        programs to exchange information.
+                    </p>
+
+                    <p>
+                        The resulting system could define a candidate stent
+                        pattern, create the geometry, generate a finite element
+                        model, mesh the model, solve the nonlinear analysis,
+                        extract the required results, and store those results in
+                        a consistent format.
+                    </p>
+
+                    <p>
+                        Statistical methods were then used to compare designs,
+                        identify relationships among variables, quantify design
+                        sensitivity, and determine which combinations produced
+                        the strongest overall performance.
+                    </p>
+
+                    <p>
+                        Once trained and validated, the system could operate
+                        with limited analyst intervention and evaluate thousands
+                        of candidate designs over a period of weeks.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="case-section automation-system-section">
+            <div class="case-container">
+                <div class="section-heading compact-heading">
+                    <p class="eyebrow">Automated Analysis System</p>
+
+                    <h2>
+                        Connect geometry, meshing, simulation, post-processing,
+                        statistics, and optimization into one workflow.
+                    </h2>
+                </div>
+
+                <div class="automation-pipeline">
+                    <article class="automation-stage">
+                        <span>01</span>
+                        <h3>Parameter Definition</h3>
+
+                        <p>
+                            Establish design variables, geometric limits,
+                            material inputs, patent boundaries, and performance
+                            objectives.
+                        </p>
+                    </article>
+
+                    <div class="automation-connector" aria-hidden="true">→</div>
+
+                    <article class="automation-stage">
+                        <span>02</span>
+                        <h3>Geometry Generation</h3>
+
+                        <p>
+                            Automatically construct a unique stent pattern from
+                            the selected variable combination.
+                        </p>
+                    </article>
+
+                    <div class="automation-connector" aria-hidden="true">→</div>
+
+                    <article class="automation-stage">
+                        <span>03</span>
+                        <h3>Model Creation</h3>
+
+                        <p>
+                            Transfer geometry into the analysis environment and
+                            create materials, contacts, loads, and boundary
+                            conditions.
+                        </p>
+                    </article>
+
+                    <div class="automation-connector" aria-hidden="true">→</div>
+
+                    <article class="automation-stage">
+                        <span>04</span>
+                        <h3>Meshing and Solution</h3>
+
+                        <p>
+                            Generate the finite element mesh and solve the
+                            nonlinear loading and deformation sequence.
+                        </p>
+                    </article>
+
+                    <div class="automation-connector" aria-hidden="true">→</div>
+
+                    <article class="automation-stage">
+                        <span>05</span>
+                        <h3>Post-Processing</h3>
+
+                        <p>
+                            Extract standardized strain, fatigue, displacement,
+                            force, profile, and deployment metrics.
+                        </p>
+                    </article>
+
+                    <div class="automation-connector" aria-hidden="true">→</div>
+
+                    <article class="automation-stage">
+                        <span>06</span>
+                        <h3>Statistical Evaluation</h3>
+
+                        <p>
+                            Compare results, identify sensitivities, and reveal
+                            interactions among design variables.
+                        </p>
+                    </article>
+
+                    <div class="automation-connector" aria-hidden="true">→</div>
+
+                    <article class="automation-stage">
+                        <span>07</span>
+                        <h3>Optimization</h3>
+
+                        <p>
+                            Select new candidates and move the search toward the
+                            highest-performing design region.
+                        </p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="case-section design-space-section">
+            <div class="case-container two-column-section">
+                <div class="section-title-column">
+                    <p class="eyebrow">Design-Space Exploration</p>
+
+                    <h2>
+                        Evaluate interactions that would be difficult to
+                        discover through intuition alone.
+                    </h2>
+                </div>
+
+                <div class="section-copy">
+                    <p>
+                        A stent pattern contains many variables, but those
+                        variables cannot be optimized independently.
+                    </p>
+
+                    <p>
+                        Increasing strut width, for example, could improve radial
+                        strength but also increase compressed profile and local
+                        bending strain. Increasing flexibility could improve
+                        conformability while reducing stability. Modifying
+                        connector geometry could move peak strains but introduce
+                        new manufacturing or patent concerns.
+                    </p>
+
+                    <p>
+                        Automated evaluation allowed these relationships to be
+                        studied across a much larger population of designs.
+                        Statistical analysis made it possible to distinguish
+                        strong design drivers from weak ones and identify
+                        interactions that were not obvious from isolated
+                        simulation results.
+                    </p>
+
+                    <p>
+                        Instead of asking whether a single proposed design
+                        worked, the team could determine where favorable design
+                        regions existed and how robust those regions were to
+                        changes in multiple variables.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="case-section variable-section">
+            <div class="case-container">
+                <div class="section-heading compact-heading">
+                    <p class="eyebrow">Interrelated Design Variables</p>
+
+                    <h2>
+                        Each geometric decision influenced several product
+                        requirements.
+                    </h2>
+                </div>
+
+                <div class="variable-grid">
+                    <article class="variable-card">
+                        <p class="variable-symbol">W</p>
+                        <h3>Strut Width</h3>
+                        <p>
+                            Influenced radial support, local strain, fatigue,
+                            profile, and manufacturability.
+                        </p>
+                    </article>
+
+                    <article class="variable-card">
+                        <p class="variable-symbol">T</p>
+                        <h3>Material Thickness</h3>
+                        <p>
+                            Affected stiffness, force, compressed diameter,
+                            strain concentration, and laser-cut processing.
+                        </p>
+                    </article>
+
+                    <article class="variable-card">
+                        <p class="variable-symbol">L</p>
+                        <h3>Strut Length</h3>
+                        <p>
+                            Changed flexibility, expansion behavior, stress
+                            distribution, and axial stability.
+                        </p>
+                    </article>
+
+                    <article class="variable-card">
+                        <p class="variable-symbol">R</p>
+                        <h3>Local Radius</h3>
+                        <p>
+                            Controlled bending strain and fatigue risk near
+                            crowns, connectors, and direction changes.
+                        </p>
+                    </article>
+
+                    <article class="variable-card">
+                        <p class="variable-symbol">C</p>
+                        <h3>Connectivity</h3>
+                        <p>
+                            Influenced pattern stability, conformability,
+                            deployment symmetry, and load transfer.
+                        </p>
+                    </article>
+
+                    <article class="variable-card">
+                        <p class="variable-symbol">P</p>
+                        <h3>Pattern Repetition</h3>
+                        <p>
+                            Affected cell size, structural uniformity, axial
+                            behavior, patent position, and overall profile.
+                        </p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="case-section">
+            <div class="case-container">
+                <div class="section-heading compact-heading">
+                    <p class="eyebrow">Technical Contributions</p>
+
+                    <h2>
+                        Independent development across simulation, programming,
+                        automation, and product design.
+                    </h2>
+                </div>
+
+                <div class="contribution-grid">
+                    <article class="contribution-card">
+                        <h3>Workflow Architecture</h3>
+
+                        <p>
+                            Defined the automated sequence linking design
+                            creation, simulation, results extraction, comparison,
+                            and optimization.
+                        </p>
+                    </article>
+
+                    <article class="contribution-card">
+                        <h3>Software Integration</h3>
+
+                        <p>
+                            Wrote code that allowed multiple specialized
+                            engineering applications to exchange data and
+                            execute coordinated tasks.
+                        </p>
+                    </article>
+
+                    <article class="contribution-card">
+                        <h3>Parametric Modeling</h3>
+
+                        <p>
+                            Converted stent geometry into a controllable design
+                            definition that could generate thousands of unique
+                            candidates.
+                        </p>
+                    </article>
+
+                    <article class="contribution-card">
+                        <h3>Automated FEA</h3>
+
+                        <p>
+                            Automated model creation, meshing, nonlinear
+                            solution, post-processing, and standardized results
+                            extraction.
+                        </p>
+                    </article>
+
+                    <article class="contribution-card">
+                        <h3>Statistical Analysis</h3>
+
+                        <p>
+                            Used large simulation datasets to identify design
+                            sensitivities, dependencies, interactions, and
+                            promising regions.
+                        </p>
+                    </article>
+
+                    <article class="contribution-card">
+                        <h3>Optimization</h3>
+
+                        <p>
+                            Directed the computational search toward a viable
+                            design that balanced multiple competing
+                            requirements.
+                        </p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="case-section scale-section">
+            <div class="case-container">
+                <div class="section-heading compact-heading">
+                    <p class="eyebrow">Change in Engineering Scale</p>
+
+                    <h2>
+                        Automation transformed the number of designs that could
+                        be evaluated.
+                    </h2>
+                </div>
+
+                <div class="scale-comparison">
+                    <article class="scale-card">
+                        <p class="scale-number">1</p>
+                        <h3>Manual Design Loop</h3>
+
+                        <p>
+                            An analyst creates, solves, reviews, and modifies
+                            one candidate at a time.
+                        </p>
+                    </article>
+
+                    <div class="scale-symbol" aria-hidden="true">→</div>
+
+                    <article class="scale-card scale-card-middle">
+                        <p class="scale-number">2,000+</p>
+                        <h3>Automated Evaluations</h3>
+
+                        <p>
+                            Thousands of candidate designs were created and
+                            analyzed through the automated system.
+                        </p>
+                    </article>
+
+                    <div class="scale-symbol" aria-hidden="true">→</div>
+
+                    <article class="scale-card scale-card-highlight">
+                        <p class="scale-number">8,000+</p>
+                        <h3>Engineering Hours Avoided</h3>
+
+                        <p>
+                            Automation eliminated thousands of hours of
+                            repetitive manual model construction and analysis.
+                        </p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="case-section validation-section">
+            <div class="case-container two-column-section">
+                <div class="section-title-column">
+                    <p class="eyebrow">Physical Validation</p>
+
+                    <h2>
+                        Computational optimization narrowed the search, but
+                        testing remained the final evidence.
+                    </h2>
+                </div>
+
+                <div class="section-copy">
+                    <p>
+                        The automated system was not intended to replace
+                        physical testing. Its purpose was to determine which
+                        design deserved the investment required for
+                        manufacturing and long-duration validation.
+                    </p>
+
+                    <p>
+                        After thousands of possible configurations were
+                        evaluated, a viable optimized design was selected for
+                        prototype fabrication and fatigue testing.
+                    </p>
+
+                    <p>
+                        The selected design passed the required durability
+                        testing, supporting the validity of the computational
+                        screening and optimization process.
+                    </p>
+
+                    <p>
+                        This result demonstrated that large-scale simulation
+                        could reduce development risk by reserving costly
+                        physical testing for candidates with a substantially
+                        stronger analytical basis.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="case-section impact-section">
+            <div class="case-container">
+                <div class="section-heading compact-heading">
+                    <p class="eyebrow">Engineering Impact</p>
+
+                    <h2>
+                        A new development capability, not merely a single
+                        optimized design.
+                    </h2>
+                </div>
+
+                <div class="impact-grid">
+                    <article class="impact-card">
+                        <span>01</span>
+                        <h3>Faster Exploration</h3>
+
+                        <p>
+                            Thousands of designs could be evaluated in weeks
+                            instead of relying on a small number of manually
+                            generated candidates.
+                        </p>
+                    </article>
+
+                    <article class="impact-card">
+                        <span>02</span>
+                        <h3>Reduced Prototype Risk</h3>
+
+                        <p>
+                            Physical prototypes were reserved for designs that
+                            had already demonstrated strong analytical
+                            performance.
+                        </p>
+                    </article>
+
+                    <article class="impact-card">
+                        <span>03</span>
+                        <h3>Deeper Design Insight</h3>
+
+                        <p>
+                            Statistical analysis revealed variable interactions
+                            and sensitivities that were difficult to identify
+                            through isolated studies.
+                        </p>
+                    </article>
+
+                    <article class="impact-card">
+                        <span>04</span>
+                        <h3>Repeatable Evaluation</h3>
+
+                        <p>
+                            Every candidate was modeled and compared using a
+                            consistent automated process.
+                        </p>
+                    </article>
+
+                    <article class="impact-card">
+                        <span>05</span>
+                        <h3>Reusable Technology</h3>
+
+                        <p>
+                            The underlying automation methods could be adapted
+                            to other large parametric engineering problems.
+                        </p>
+                    </article>
+
+                    <article class="impact-card">
+                        <span>06</span>
+                        <h3>Validated Outcome</h3>
+
+                        <p>
+                            The selected optimized design passed the required
+                            long-duration fatigue testing.
+                        </p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="case-section outcome-section">
+            <div class="case-container two-column-section">
+                <div class="section-title-column">
+                    <p class="eyebrow">Project Outcome</p>
+
+                    <h2>
+                        Thousands of candidates reduced to a viable,
+                        fatigue-tested design.
+                    </h2>
+                </div>
+
+                <div class="section-copy">
+                    <p>
+                        The automated design system evaluated more than two
+                        thousand candidate designs and replaced an estimated
+                        eight thousand or more hours of repetitive manual
+                        analysis.
+                    </p>
+
+                    <p>
+                        It created a structured method for exploring a narrow
+                        patent-constrained design space containing numerous
+                        interdependent variables and competing performance
+                        requirements.
+                    </p>
+
+                    <p>
+                        A viable optimized design was selected from the
+                        computational study, manufactured, and subjected to the
+                        required long-duration fatigue testing. The design
+                        passed the life requirements.
+                    </p>
+
+                    <p>
+                        More importantly, the project demonstrated that a
+                        previously impractical product-development problem could
+                        be solved by independently learning new technologies,
+                        integrating specialized software, and creating a
+                        capability that did not previously exist within the
+                        conventional development process.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="reflection-section">
+            <div class="case-container">
+                <p class="eyebrow">Engineering Reflection</p>
+
+                <blockquote>
+                    The decisive step was not improving the traditional design
+                    loop. It was recognizing that the traditional loop could
+                    not search the problem at the required scale. By creating a
+                    new automated process, the engineering question changed
+                    from “Which design should we try next?” to “What does the
+                    complete design landscape tell us?”
+                </blockquote>
+            </div>
+        </section>
+
+        <section class="public-technology-note">
+            <div class="case-container">
+                <div>
+                    <p class="eyebrow">Technical Context</p>
+
+                    <h2>Nitinol Stent-Graft Development</h2>
+                </div>
+
+                <div>
+                    <p>
+                        Public medical-device literature describes laser-cut
+                        nitinol stents as patterned structures manufactured from
+                        nickel-titanium tubing. Finite element modeling is
+                        commonly used to study radial compression, deployment,
+                        deformation, and fatigue in self-expanding nitinol
+                        devices.
+                    </p>
+
+                    <p>
+                        Gore publicly describes vascular endoprostheses that
+                        combine nitinol support structures with ePTFE graft
+                        materials. This case study describes a historical
+                        development program at a general engineering level and
+                        does not identify a commercial product.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="confidentiality-note">
+            <div class="case-container">
+                <p>
+                    This case study describes my engineering methods and
+                    responsibilities at a general level. Proprietary product
+                    geometry, patent analyses, material models, design
+                    variables, optimization settings, test specifications,
+                    software code, and confidential performance results have
+                    been intentionally excluded.
+                </p>
+            </div>
+        </section>
+
+        <nav class="case-navigation" aria-label="Case study navigation">
+            <div class="case-container">
+                <a href="simulation-technologies.html">
+                    <span>Previous Case Study</span>
+                    Structural Dynamics Technologies
+                </a>
+
+                <div class="next-case-placeholder">
+                    <span>Next Case Study</span>
+                    Engineering Analysis and Automation
+                </div>
+            </div>
+        </nav>
+    </main>
+
+    <footer class="site-footer" id="contact">
+        <div>
+            <h2>Eric Dodgen</h2>
+
+            <p>
+                Mechanical Engineering · Product Development · Technical Leadership
+            </p>
+        </div>
+
+        <p>
+            Contact information and resume link will be added here.
+        </p>
+    </footer>
+</body>
+</html>
