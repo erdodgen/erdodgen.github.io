@@ -809,3 +809,232 @@ a {
         padding: 80px 0;
     }
 }
+/* =========================================================
+   ORTHOPEDIC CASE STUDY
+   ========================================================= */
+
+.spine-visual {
+    position: relative;
+    width: min(380px, 100%);
+    aspect-ratio: 1;
+    margin: 0 auto;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    background:
+        linear-gradient(
+            rgba(255, 255, 255, 0.035) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(255, 255, 255, 0.035) 1px,
+            transparent 1px
+        );
+    background-size: 28px 28px;
+}
+
+.spine-centerline {
+    position: absolute;
+    top: 9%;
+    bottom: 9%;
+    left: 50%;
+    width: 1px;
+    background: rgba(220, 229, 235, 0.25);
+    transform: translateX(-50%);
+}
+
+.vertebra {
+    position: absolute;
+    left: 50%;
+    width: 42%;
+    height: 13%;
+    border: 2px solid rgba(220, 229, 235, 0.82);
+    border-radius: 42% 42% 35% 35%;
+    transform: translateX(-50%);
+}
+
+.vertebra::before,
+.vertebra::after {
+    position: absolute;
+    top: 50%;
+    width: 26%;
+    height: 38%;
+    border: 1px solid rgba(220, 229, 235, 0.55);
+    content: "";
+    transform: translateY(-50%);
+}
+
+.vertebra::before {
+    right: 100%;
+    border-right: 0;
+}
+
+.vertebra::after {
+    left: 100%;
+    border-left: 0;
+}
+
+.vertebra-one {
+    top: 12%;
+}
+
+.vertebra-two {
+    top: 33%;
+}
+
+.vertebra-three {
+    top: 54%;
+}
+
+.vertebra-four {
+    top: 75%;
+}
+
+.spine-rail {
+    position: absolute;
+    top: 18%;
+    bottom: 14%;
+    width: 4px;
+    background: rgba(184, 202, 213, 0.9);
+}
+
+.spine-rail-left {
+    left: 23%;
+}
+
+.spine-rail-right {
+    right: 23%;
+}
+
+.spine-anchor {
+    position: absolute;
+    width: 12%;
+    aspect-ratio: 1;
+    border: 2px solid #dce5eb;
+    border-radius: 50%;
+    background: var(--deep-navy);
+}
+
+.anchor-left-one {
+    top: 23%;
+    left: 17%;
+}
+
+.anchor-right-one {
+    top: 23%;
+    right: 17%;
+}
+
+.anchor-left-two {
+    top: 44%;
+    left: 17%;
+}
+
+.anchor-right-two {
+    top: 44%;
+    right: 17%;
+}
+
+.anchor-left-three {
+    top: 65%;
+    left: 17%;
+}
+
+.anchor-right-three {
+    top: 65%;
+    right: 17%;
+}
+
+.tradeoff-grid {
+    border-top: 1px solid var(--border);
+}
+
+.tradeoff-row {
+    display: grid;
+    grid-template-columns: 1fr 150px 1fr;
+    align-items: center;
+    gap: 28px;
+    padding: 34px 0;
+    border-bottom: 1px solid var(--border);
+}
+
+.tradeoff-row h3 {
+    margin: 0 0 8px;
+    color: var(--deep-navy);
+    font-size: 1.2rem;
+}
+
+.tradeoff-row p {
+    margin: 0;
+    color: var(--muted-text);
+}
+
+.tradeoff-balance {
+    color: var(--accent);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.public-product-note {
+    padding: 72px 0;
+    background: var(--white);
+    border-bottom: 1px solid var(--border);
+}
+
+.public-product-note .case-container {
+    display: grid;
+    grid-template-columns: 0.75fr 1.25fr;
+    gap: 80px;
+}
+
+.public-product-note h2 {
+    margin: 0;
+    color: var(--deep-navy);
+    font-size: clamp(2rem, 4vw, 3rem);
+    letter-spacing: -0.03em;
+}
+
+.public-product-note p {
+    margin: 0 0 22px;
+    color: var(--muted-text);
+}
+
+.public-product-note a {
+    color: var(--navy);
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.public-product-note a::after {
+    content: " ↗";
+}
+
+.public-product-note a:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 900px) {
+    .spine-visual {
+        width: min(330px, 85vw);
+        margin-left: 0;
+    }
+
+    .public-product-note .case-container {
+        grid-template-columns: 1fr;
+        gap: 28px;
+    }
+}
+
+@media (max-width: 620px) {
+    .tradeoff-row {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .tradeoff-balance {
+        text-align: left;
+    }
+}
