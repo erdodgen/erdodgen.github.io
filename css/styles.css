@@ -842,12 +842,19 @@ a {
     overflow: hidden;
     background: var(--navy);
     border: 1px solid rgba(255, 255, 255, 0.12);
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.22);
 }
 
 .challenge-hero-image img {
     width: 100%;
     height: auto;
     display: block;
+}
+@media (max-width: 700px) {
+    .challenge-hero-image {
+        width: calc(100% - 32px);
+        margin: -10px auto 56px;
+    }
 }
 /* =========================================================
    ORTHOPEDIC CASE STUDY
