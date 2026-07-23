@@ -214,7 +214,7 @@ a {
     height: 210px;
     object-fit: contain;
     display: block;
-    transform: translateX(4%);
+    transform: translateX(2%);
 
     transition: transform .45s ease;
 }
@@ -234,7 +234,7 @@ a {
 }
 
 .challenge-card:hover .card-image img {
-    transform: translateX(4%) scale(1.04);
+    transform: translateX(2%) scale(1.04);
 }
 .landing-gear {
     background:
