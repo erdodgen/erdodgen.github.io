@@ -198,17 +198,43 @@ a {
 }
 
 .card-image {
+    position: relative;
+
     min-height: 210px;
     display: flex;
     align-items: flex-end;
     justify-content: flex-end;
-    padding: 22px;
+
+    overflow: hidden;
+
     background: var(--navy);
-    color: rgba(255, 255, 255, 0.58);
-    font-size: 3.5rem;
-    font-weight: 700;
+}
+.card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+
+    transition: transform .45s ease;
 }
 
+.card-image::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+
+    background: linear-gradient(
+        to bottom,
+        rgba(0,0,0,.05),
+        rgba(0,0,0,.35)
+    );
+
+    pointer-events: none;
+}
+
+.challenge-card:hover .card-image img {
+    transform: scale(1.05);
+}
 .landing-gear {
     background:
         linear-gradient(145deg, #0d2235, #355b75);
