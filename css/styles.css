@@ -215,7 +215,6 @@ a {
     object-fit: contain;
     object-position: center center;
     display: block;
-    transform: translateX(6%);
 
     transition: transform .45s ease;
 }
@@ -235,7 +234,7 @@ a {
 }
 
 .challenge-card:hover .card-image img {
-    transform: translateX(6%) scale(1.04);
+    transform: scale(1.04);
 }
 .landing-gear {
     background:
