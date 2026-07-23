@@ -1,0 +1,891 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="Structural dynamics and vibration testing research case study by Eric Dodgen, covering electrodynamic shaker interaction, digital twins, transmission simulators, MIMO response reconstruction, university partnerships, and test fixture design."
+    >
+
+    <title>Structural Dynamics Simulation Technologies | Eric Dodgen</title>
+
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+
+<body>
+    <header class="site-header">
+        <div class="header-inner">
+            <a class="site-name" href="../index.html">Eric Dodgen</a>
+
+            <nav class="main-nav" aria-label="Main navigation">
+                <a href="../index.html#challenges">Engineering Challenges</a>
+                <a href="../index.html#about">About</a>
+                <a href="../index.html#contact">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="case-hero dynamics-case-hero">
+            <div class="case-hero-inner">
+                <div class="case-hero-copy">
+                    <p class="eyebrow">Structural Dynamics Research</p>
+
+                    <h1>Simulation Technologies for Dynamic Testing</h1>
+
+                    <p class="case-subtitle">
+                        Developing digital-twin methods that represent the
+                        coupled behavior of electrodynamic shakers, test
+                        fixtures, and test articles to improve vibration-test
+                        planning and fixture design.
+                    </p>
+
+                    <div class="case-tags" aria-label="Project capabilities">
+                        <span>Structural Dynamics</span>
+                        <span>Digital Twins</span>
+                        <span>MIMO Testing</span>
+                        <span>University Research</span>
+                    </div>
+                </div>
+
+                <div
+                    class="dynamics-visual"
+                    role="img"
+                    aria-label="Abstract technical illustration of an electrodynamic shaker, fixture, test article, and frequency response"
+                >
+                    <div class="dynamics-grid"></div>
+
+                    <div class="shaker-body">
+                        <div class="shaker-armature"></div>
+                        <div class="shaker-base"></div>
+                    </div>
+
+                    <div class="fixture-platform"></div>
+
+                    <div class="test-article">
+                        <div class="article-level article-level-one"></div>
+                        <div class="article-level article-level-two"></div>
+                        <div class="article-level article-level-three"></div>
+                    </div>
+
+                    <div class="response-line">
+                        <span class="response-segment response-segment-one"></span>
+                        <span class="response-segment response-segment-two"></span>
+                        <span class="response-segment response-segment-three"></span>
+                        <span class="response-segment response-segment-four"></span>
+                        <span class="response-segment response-segment-five"></span>
+                        <span class="response-segment response-segment-six"></span>
+                    </div>
+
+                    <div class="sensor sensor-one"></div>
+                    <div class="sensor sensor-two"></div>
+                    <div class="sensor sensor-three"></div>
+
+                    <div class="feedback-path"></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="case-section snapshot-section">
+            <div class="case-container">
+                <div class="section-heading compact-heading">
+                    <p class="eyebrow">Research Snapshot</p>
+
+                    <h2>
+                        A multi-year research program connecting simulation,
+                        laboratory testing, and fixture design.
+                    </h2>
+                </div>
+
+                <div class="snapshot-grid">
+                    <div class="snapshot-item">
+                        <p class="snapshot-label">Research Area</p>
+                        <p class="snapshot-value">
+                            Structural Dynamics
+                        </p>
+                    </div>
+
+                    <div class="snapshot-item">
+                        <p class="snapshot-label">Application</p>
+                        <p class="snapshot-value">
+                            Environmental Vibration Testing
+                        </p>
+                    </div>
+
+                    <div class="snapshot-item">
+                        <p class="snapshot-label">Primary Role</p>
+                        <p class="snapshot-value">
+                            Research Direction and Technical Collaboration
+                        </p>
+                    </div>
+
+                    <div class="snapshot-item">
+                        <p class="snapshot-label">Program Duration</p>
+                        <p class="snapshot-value">
+                            Multi-Year and Continuing
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="case-section">
+            <div class="case-container two-column-section">
+                <div class="section-title-column">
+                    <p class="eyebrow">The Testing Problem</p>
+
+                    <h2>
+                        A shaker may have adequate capacity and still fail to
+                        reproduce the required vibration environment.
+                    </h2>
+                </div>
+
+                <div class="section-copy">
+                    <p>
+                        Electrodynamic vibration shakers use closed-loop
+                        feedback control to generate and maintain a specified
+                        frequency-response environment throughout a test.
+                    </p>
+
+                    <p>
+                        In practice, the control system is not always able to
+                        reach the required amplitudes across the complete
+                        frequency range. The limitation may result from shaker
+                        capacity, fixture flexibility, test-article dynamics,
+                        mounting conditions, control locations, or interaction
+                        among several of these factors.
+                    </p>
+
+                    <p>
+                        Changing how a test article is mounted can sometimes
+                        resolve the problem. However, without a predictive
+                        method, fixture and mounting changes become a costly
+                        process of trial and error.
+                    </p>
+
+                    <p>
+                        Conventional finite element analysis can reveal fixture
+                        modes within the test frequency range, but a fixture-only
+                        model does not fully represent the physical system. The
+                        shaker, fixture, attachment interfaces, sensors, control
+                        system, and test article all interact dynamically.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="case-section context-section">
+            <div class="case-container">
+                <div class="section-heading compact-heading">
+                    <p class="eyebrow">Why Conventional Analysis Falls Short</p>
+
+                    <h2>
+                        The test fixture is not an isolated structure.
+                    </h2>
+                </div>
+
+                <div class="context-grid">
+                    <article class="context-card">
+                        <span class="context-number">01</span>
+                        <h3>Coupled Dynamics</h3>
+
+                        <p>
+                            The shaker, fixture, mounting interfaces, and test
+                            article alter one another’s dynamic response.
+                        </p>
+                    </article>
+
+                    <article class="context-card">
+                        <span class="context-number">02</span>
+                        <h3>Control Interaction</h3>
+
+                        <p>
+                            Feedback control responds to measured accelerations,
+                            so sensor location and structural modes influence
+                            the commanded input.
+                        </p>
+                    </article>
+
+                    <article class="context-card">
+                        <span class="context-number">03</span>
+                        <h3>Shaker Limitations</h3>
+
+                        <p>
+                            Force, displacement, acceleration, voltage, and
+                            current limits vary with frequency and loading.
+                        </p>
+                    </article>
+
+                    <article class="context-card">
+                        <span class="context-number">04</span>
+                        <h3>Boundary Conditions</h3>
+
+                        <p>
+                            Laboratory mounting may not reproduce the impedance
+                            or interface behavior experienced in the field.
+                        </p>
+                    </article>
+
+                    <article class="context-card">
+                        <span class="context-number">05</span>
+                        <h3>Multiple Excitation Paths</h3>
+
+                        <p>
+                            Real environments can excite a component through
+                            several attachment points and directions
+                            simultaneously.
+                        </p>
+                    </article>
+
+                    <article class="context-card">
+                        <span class="context-number">06</span>
+                        <h3>Limited Observability</h3>
+
+                        <p>
+                            Control accelerometers provide only a partial view
+                            of the response throughout the complete test
+                            article.
+                        </p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="case-section">
+            <div class="case-container two-column-section">
+                <div class="section-title-column">
+                    <p class="eyebrow">Research Vision</p>
+
+                    <h2>
+                        Replace fixture-design trial and error with a predictive
+                        digital representation of the complete test.
+                    </h2>
+                </div>
+
+                <div class="section-copy">
+                    <p>
+                        The research program sought to develop models that
+                        included the important dynamic behavior of the complete
+                        laboratory setup rather than evaluating the fixture
+                        independently.
+                    </p>
+
+                    <p>
+                        These digital twins combined analytical models,
+                        experimental measurements, dynamic substructuring,
+                        electromechanical shaker representations, and response
+                        reconstruction methods.
+                    </p>
+
+                    <p>
+                        The objective was to predict whether a proposed
+                        configuration could reproduce the desired test
+                        environment before committing to fixture fabrication
+                        and full laboratory setup.
+                    </p>
+
+                    <p>
+                        The resulting models could also help explain failed
+                        tests by identifying limiting resonances, poor attachment
+                        impedance, inadequate actuator locations, unsuitable
+                        control points, or shaker capability constraints.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="case-section system-model-section">
+            <div class="case-container">
+                <div class="section-heading compact-heading">
+                    <p class="eyebrow">The Complete Dynamic System</p>
+
+                    <h2>
+                        Test performance emerges from the interaction of every
+                        subsystem.
+                    </h2>
+                </div>
+
+                <div class="dynamic-system-map">
+                    <article class="system-node">
+                        <span>01</span>
+                        <h3>Control Specification</h3>
+                        <p>
+                            Required response spectra, frequency range, control
+                            locations, and tolerances.
+                        </p>
+                    </article>
+
+                    <div class="system-connector" aria-hidden="true">→</div>
+
+                    <article class="system-node">
+                        <span>02</span>
+                        <h3>Shaker System</h3>
+                        <p>
+                            Armature, suspension, amplifier, electrical
+                            behavior, and operating limits.
+                        </p>
+                    </article>
+
+                    <div class="system-connector" aria-hidden="true">→</div>
+
+                    <article class="system-node">
+                        <span>03</span>
+                        <h3>Test Fixture</h3>
+                        <p>
+                            Structural modes, stiffness, mass distribution, and
+                            attachment geometry.
+                        </p>
+                    </article>
+
+                    <div class="system-connector" aria-hidden="true">→</div>
+
+                    <article class="system-node">
+                        <span>04</span>
+                        <h3>Test Article</h3>
+                        <p>
+                            Component modes, interface forces, damping, and
+                            response throughout the structure.
+                        </p>
+                    </article>
+
+                    <div class="system-feedback">
+                        <span>Measured Response and Feedback Control</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="case-section partnership-section">
+            <div class="case-container two-column-section">
+                <div class="section-title-column">
+                    <p class="eyebrow">Research Partnerships</p>
+
+                    <h2>
+                        Build sustained collaborations with universities,
+                        professors, and student researchers.
+                    </h2>
+                </div>
+
+                <div class="section-copy">
+                    <p>
+                        A central contribution of the program was establishing
+                        and maintaining research partnerships capable of
+                        addressing problems beyond the scope of routine
+                        production engineering.
+                    </p>
+
+                    <p>
+                        I worked with multiple universities, faculty members,
+                        graduate students, internal engineers, test-laboratory
+                        personnel, and subject-matter experts to identify
+                        research needs and convert them into structured
+                        technical investigations.
+                    </p>
+
+                    <p>
+                        These collaborations combined practical knowledge of
+                        environmental testing with university expertise in
+                        modal analysis, experimental dynamics, control,
+                        optimization, system identification, and dynamic
+                        substructuring.
+                    </p>
+
+                    <p>
+                        The research effort produced technical methods,
+                        experimental demonstrations, peer-reviewed publications,
+                        internal technical reports, student development, and
+                        analytical tools that could be applied to real test
+                        programs.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="case-section workflow-section">
+            <div class="case-container">
+                <div class="section-heading compact-heading">
+                    <p class="eyebrow">Research-to-Application Workflow</p>
+
+                    <h2>
+                        Convert recurring laboratory problems into validated
+                        engineering methods.
+                    </h2>
+                </div>
+
+                <div class="workflow-grid">
+                    <div class="workflow-step">
+                        <span>01</span>
+                        <h3>Operational Problem</h3>
+
+                        <p>
+                            Identify a recurring test limitation or unexplained
+                            laboratory behavior.
+                        </p>
+                    </div>
+
+                    <div class="workflow-arrow" aria-hidden="true">→</div>
+
+                    <div class="workflow-step">
+                        <span>02</span>
+                        <h3>Research Question</h3>
+
+                        <p>
+                            Translate the practical problem into a focused
+                            structural-dynamics investigation.
+                        </p>
+                    </div>
+
+                    <div class="workflow-arrow" aria-hidden="true">→</div>
+
+                    <div class="workflow-step">
+                        <span>03</span>
+                        <h3>University Partnership</h3>
+
+                        <p>
+                            Match the problem with faculty expertise, students,
+                            facilities, and analytical capabilities.
+                        </p>
+                    </div>
+
+                    <div class="workflow-arrow" aria-hidden="true">→</div>
+
+                    <div class="workflow-step">
+                        <span>04</span>
+                        <h3>Model Development</h3>
+
+                        <p>
+                            Build analytical, experimental, reduced-order, and
+                            electromechanical representations.
+                        </p>
+                    </div>
+
+                    <div class="workflow-arrow" aria-hidden="true">→</div>
+
+                    <div class="workflow-step">
+                        <span>05</span>
+                        <h3>Experimental Validation</h3>
+
+                        <p>
+                            Compare predicted behavior with controlled
+                            laboratory measurements.
+                        </p>
+                    </div>
+
+                    <div class="workflow-arrow" aria-hidden="true">→</div>
+
+                    <div class="workflow-step">
+                        <span>06</span>
+                        <h3>Method Refinement</h3>
+
+                        <p>
+                            Study accuracy, sensitivity, controllability,
+                            impedance, and practical limitations.
+                        </p>
+                    </div>
+
+                    <div class="workflow-arrow" aria-hidden="true">→</div>
+
+                    <div class="workflow-step">
+                        <span>07</span>
+                        <h3>Engineering Application</h3>
+
+                        <p>
+                            Apply the resulting digital twins to fixture design
+                            and test planning.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="case-section research-methods-section">
+            <div class="case-container">
+                <div class="section-heading compact-heading">
+                    <p class="eyebrow">Research Technologies</p>
+
+                    <h2>
+                        A growing toolkit for predicting and reconstructing
+                        complex vibration environments.
+                    </h2>
+                </div>
+
+                <div class="research-method-grid">
+                    <article class="research-method-card">
+                        <p class="method-abbreviation">TSM</p>
+                        <h3>Transmission Simulator Method</h3>
+
+                        <p>
+                            Uses an experimentally characterized interface
+                            structure to preserve important attachment geometry
+                            and dynamic behavior when representing a component
+                            within a larger system.
+                        </p>
+                    </article>
+
+                    <article class="research-method-card">
+                        <p class="method-abbreviation">MIMO</p>
+                        <h3>Multi-Input Multi-Output Testing</h3>
+
+                        <p>
+                            Uses multiple coordinated actuators and response
+                            measurements to reproduce multidirectional dynamic
+                            environments more realistically than conventional
+                            single-axis excitation.
+                        </p>
+                    </article>
+
+                    <article class="research-method-card">
+                        <p class="method-abbreviation">TS-IMMAT</p>
+                        <h3>Impedance-Matched Response Reconstruction</h3>
+
+                        <p>
+                            Combines transmission-simulator concepts with
+                            multi-axis control to reproduce the target response
+                            of a component while accounting for attachment
+                            impedance.
+                        </p>
+                    </article>
+
+                    <article class="research-method-card">
+                        <p class="method-abbreviation">EDS</p>
+                        <h3>Experimental Dynamic Substructuring</h3>
+
+                        <p>
+                            Combines measured dynamic behavior from physical
+                            hardware with analytical models of the remaining
+                            system.
+                        </p>
+                    </article>
+
+                    <article class="research-method-card">
+                        <p class="method-abbreviation">EM</p>
+                        <h3>Shaker Electromechanical Models</h3>
+
+                        <p>
+                            Represent force, acceleration, voltage, current,
+                            displacement, and coupled shaker-structure behavior
+                            across the test frequency range.
+                        </p>
+                    </article>
+
+                    <article class="research-method-card">
+                        <p class="method-abbreviation">DT</p>
+                        <h3>Test-System Digital Twins</h3>
+
+                        <p>
+                            Integrate structural, experimental, actuator, and
+                            control information to predict the behavior of a
+                            proposed laboratory configuration.
+                        </p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="case-section response-reconstruction-section">
+            <div class="case-container two-column-section">
+                <div class="section-title-column">
+                    <p class="eyebrow">Response Reconstruction</p>
+
+                    <h2>
+                        Reproduce the environment experienced by the component,
+                        not merely the motion at the shaker table.
+                    </h2>
+                </div>
+
+                <div class="section-copy">
+                    <p>
+                        Traditional vibration tests commonly control the input
+                        at a limited number of fixture or interface locations.
+                        Matching those control measurements does not guarantee
+                        that the response throughout the test article matches
+                        its intended field environment.
+                    </p>
+
+                    <p>
+                        Transmission Simulator–Based MIMO Response
+                        Reconstruction was investigated as a method for
+                        recreating the desired dynamic response while
+                        maintaining more realistic attachment geometry and
+                        impedance.
+                    </p>
+
+                    <p>
+                        The research examined how accurately responses could be
+                        reconstructed at both controlled and uncontrolled
+                        locations, and how that accuracy changed as the
+                        transmission simulator became more or less dynamically
+                        representative of the intended installation.
+                    </p>
+
+                    <p>
+                        These studies demonstrated the value of simulating the
+                        proposed MIMO test before execution, allowing the team
+                        to evaluate fixture design, attachment impedance,
+                        actuator configuration, controllability, and expected
+                        reconstruction accuracy.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="case-section context-section">
+            <div class="case-container">
+                <div class="section-heading compact-heading">
+                    <p class="eyebrow">My Contributions</p>
+
+                    <h2>
+                        Technical direction across research, partnerships,
+                        experimentation, and implementation.
+                    </h2>
+                </div>
+
+                <div class="contribution-grid">
+                    <article class="contribution-card">
+                        <h3>Research Strategy</h3>
+
+                        <p>
+                            Identified high-value structural-dynamics problems
+                            and helped define multi-year research directions.
+                        </p>
+                    </article>
+
+                    <article class="contribution-card">
+                        <h3>University Collaboration</h3>
+
+                        <p>
+                            Established partnerships with professors and
+                            students and connected their research to practical
+                            testing needs.
+                        </p>
+                    </article>
+
+                    <article class="contribution-card">
+                        <h3>Technical Guidance</h3>
+
+                        <p>
+                            Guided analytical and experimental approaches,
+                            reviewed results, and helped focus investigations on
+                            deployable methods.
+                        </p>
+                    </article>
+
+                    <article class="contribution-card">
+                        <h3>Model Development</h3>
+
+                        <p>
+                            Supported development of coupled structural,
+                            fixture, shaker, and test-article simulation
+                            methodologies.
+                        </p>
+                    </article>
+
+                    <article class="contribution-card">
+                        <h3>Experimental Validation</h3>
+
+                        <p>
+                            Helped connect simulations with laboratory
+                            measurements and assess model accuracy and
+                            limitations.
+                        </p>
+                    </article>
+
+                    <article class="contribution-card">
+                        <h3>Technology Transfer</h3>
+
+                        <p>
+                            Advanced research methods toward usable digital
+                            twins for fixture design and test planning.
+                        </p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="case-section research-impact-section">
+            <div class="case-container">
+                <div class="section-heading compact-heading">
+                    <p class="eyebrow">Research Impact</p>
+
+                    <h2>
+                        Progress from post-test explanation toward predictive
+                        test-system design.
+                    </h2>
+                </div>
+
+                <div class="impact-comparison">
+                    <article class="impact-column">
+                        <p class="impact-label">Traditional Approach</p>
+                        <h3>Diagnose After Failure</h3>
+
+                        <ul>
+                            <li>Fabricate the fixture</li>
+                            <li>Install the test article</li>
+                            <li>Attempt the controlled vibration test</li>
+                            <li>Encounter amplitude or control limitations</li>
+                            <li>Modify the fixture or mounting arrangement</li>
+                            <li>Repeat until acceptable performance is achieved</li>
+                        </ul>
+                    </article>
+
+                    <div class="impact-transition" aria-hidden="true">→</div>
+
+                    <article class="impact-column impact-column-highlight">
+                        <p class="impact-label">Digital-Twin Approach</p>
+                        <h3>Predict Before Fabrication</h3>
+
+                        <ul>
+                            <li>Model the complete coupled test system</li>
+                            <li>Evaluate resonances and attachment impedance</li>
+                            <li>Estimate shaker capability requirements</li>
+                            <li>Assess actuator and control locations</li>
+                            <li>Compare alternative fixture concepts</li>
+                            <li>Select a stronger test configuration earlier</li>
+                        </ul>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="case-section outcome-section">
+            <div class="case-container two-column-section">
+                <div class="section-title-column">
+                    <p class="eyebrow">Program Outcome</p>
+
+                    <h2>
+                        Digital twins developed through the research are now
+                        informing test-fixture design.
+                    </h2>
+                </div>
+
+                <div class="section-copy">
+                    <p>
+                        The multi-year program created a growing body of methods
+                        for representing the coupled behavior of shakers,
+                        fixtures, test articles, attachment interfaces, and
+                        control systems.
+                    </p>
+
+                    <p>
+                        Research results included transmission-simulator-based
+                        response reconstruction, MIMO testing methods,
+                        electromechanical shaker models, experimental dynamic
+                        substructuring, fixture-design investigations, and
+                        studies of impedance and controllability.
+                    </p>
+
+                    <p>
+                        The resulting digital twins are now being used to inform
+                        test-fixture design and provide earlier insight into
+                        configurations that may prevent a shaker from achieving
+                        the required environment.
+                    </p>
+
+                    <p>
+                        The research remains active. Continued development can
+                        improve prediction accuracy, reduce fixture redesign,
+                        shorten test preparation, lower laboratory cost, and
+                        make complex environmental testing more repeatable.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="reflection-section">
+            <div class="case-container">
+                <p class="eyebrow">Engineering Reflection</p>
+
+                <blockquote>
+                    The most valuable research programs do more than produce an
+                    isolated model or publication. They connect persistent
+                    operational problems with the right technical partners,
+                    create methods that can be experimentally challenged, and
+                    continue maturing those methods until they improve real
+                    engineering decisions.
+                </blockquote>
+            </div>
+        </section>
+
+        <section class="public-research-note">
+            <div class="case-container">
+                <div>
+                    <p class="eyebrow">Published Research</p>
+                    <h2>Transmission Simulator–Based Response Reconstruction</h2>
+                </div>
+
+                <div>
+                    <p>
+                        Publicly available research includes investigations of
+                        Transmission Simulator–Based MIMO Response
+                        Reconstruction, reconstruction accuracy, attachment
+                        impedance, controllability, and integrated shaker
+                        electromechanical models.
+                    </p>
+
+                    <p>
+                        These publications describe research performed with
+                        university and laboratory collaborators and provide
+                        public technical context for the broader development
+                        program summarized here.
+                    </p>
+
+                    <a
+                        href="https://www.osti.gov/biblio/2462852"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        View related research through OSTI
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section class="confidentiality-note">
+            <div class="case-container">
+                <p>
+                    This case study discusses publicly documented research
+                    concepts and my general technical responsibilities.
+                    Proprietary test configurations, controlled hardware,
+                    unpublished measurements, program-specific requirements,
+                    internal software, and sensitive laboratory information
+                    have been intentionally excluded.
+                </p>
+            </div>
+        </section>
+
+        <nav class="case-navigation" aria-label="Case study navigation">
+            <div class="case-container">
+                <a href="consumer-products.html">
+                    <span>Previous Case Study</span>
+                    Connected Beauty Devices
+                </a>
+
+                <div class="next-case-placeholder">
+                    <span>Next Case Study</span>
+                    Engineering Automation
+                </div>
+            </div>
+        </nav>
+    </main>
+
+    <footer class="site-footer" id="contact">
+        <div>
+            <h2>Eric Dodgen</h2>
+
+            <p>
+                Mechanical Engineering · Product Development · Technical Leadership
+            </p>
+        </div>
+
+        <p>
+            Contact information and resume link will be added here.
+        </p>
+    </footer>
+</body>
+</html>
